@@ -35,5 +35,11 @@ body {
     right: auto;
     transform: translateX(-50%);
     width: auto;
-    display; inline-block;
+    display: inline-block;
     }
+/* Piilotetaan karusellin tekstit pienellä näytöllä */
+@media (max-width: 600px) {
+    #karuselli .carousel-caption {
+      display: none;
+    }
+  }
