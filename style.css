@@ -15,3 +15,7 @@
 .navbar-custom .nav-item:hover .nav-link {
     color: #ffffff;
     }
+/* siirtää sisällön navin alta näkyviin */
+body {
+    padding-top: 70px;
+    }
