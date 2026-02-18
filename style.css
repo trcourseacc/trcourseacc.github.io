@@ -1,30 +1,36 @@
 /* taustan väri */
 .navbar-custom {
     background-color: blueviolet;
-    }
+}
+
 /* tekstin väri */
-.navbar-custom .navbar-text{
-    color:#FFFFFF;
-    }
+.navbar-custom .navbar-text {
+    color: #FFFFFF;
+}
+
 /* linkin väri */
 .navbar-custom .navbar-nav .nav-link {
-    color:#FFFFFF;
-    }
+    color: #FFFFFF;
+}
+
 /* aktiivisen & hover-linkin väri */
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
     color: #ffffff;
-    }
+}
+
 /* siirtää sisällön navin alta näkyviin */
 body {
     padding-top: 70px;
-    }
+}
+
 /* Karusellin kuvat saman korkuisiksi */
 .carousel-inner img {
     width: 100%;
     height: 450px;
     object-fit: cover;
-    }
+}
+
 /* Karusellin tekstin tausta */
 .carousel-caption {
     background-color: rgba(0, 0, 0, 0.6);
@@ -36,23 +42,32 @@ body {
     transform: translateX(-50%);
     width: auto;
     display: inline-block;
-    }
+}
+
 /* Piilotetaan karusellin tekstit pienellä näytöllä */
 @media (max-width: 600px) {
     #karuselli .carousel-caption {
-      display: none;
+        display: none;
     }
-  }
+}
+
 /* Grid-kuvien tyyli */
 .grid-img {
     width: 100%;
     max-width: 500px;
     border-radius: 30%;
-  }
-  #ruudukko {
+}
+
+#ruudukko {
     padding-top: 80px;
-  }
+}
+
 /* Väli ruudukon ja korttien väliin */
 #kortit {
     margin-top: 60px;
-  }
+}
+
+/* Väli ennen haitariosiota */
+#haitari {
+    margin-top: 60px;
+}
