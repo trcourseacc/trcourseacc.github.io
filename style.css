@@ -43,3 +43,12 @@ body {
       display: none;
     }
   }
+/* Grid-kuvien tyyli */
+.grid-img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 30%;
+  }
+  #ruudukko {
+    padding-top: 80px;
+  }
