@@ -71,8 +71,13 @@ body {
 #haitari {
     margin-top: 60px;
 }
+
+/* Lisää väliä yhteystiedot-osioon */
+#yhteystiedot {
+    margin-top: 100px;
+}
+
 /* Kun klikataan ankkureita, jätetään tilaa fixed-naville */
 :target {
     scroll-margin-top: 80px;
-  }
-  
+}
