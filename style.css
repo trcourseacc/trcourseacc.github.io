@@ -1,3 +1,8 @@
+
+/* Sivuston fontti (Google Fonts) */
+body {
+    font-family: 'Poppins', sans-serif;
+  }
 /* siirtää sisällön navin alta näkyviin */
 body {
     padding-top: 70px;
@@ -56,7 +61,7 @@ body {
     margin-top: 100px;
 }
 
-/* Väli ennen alapalkkia */ 
+/* Väli ennen alapalkkia */
 footer {
     margin-top: 80px;
 }
