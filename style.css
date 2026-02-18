@@ -52,3 +52,7 @@ body {
   #ruudukko {
     padding-top: 80px;
   }
+/* Väli ruudukon ja korttien väliin */
+#kortit {
+    margin-top: 60px;
+  }
