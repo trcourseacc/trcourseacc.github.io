@@ -1,24 +1,3 @@
-/* taustan väri */
-.navbar-custom {
-    background-color: blueviolet;
-}
-
-/* tekstin väri */
-.navbar-custom .navbar-text {
-    color: #FFFFFF;
-}
-
-/* linkin väri */
-.navbar-custom .navbar-nav .nav-link {
-    color: #FFFFFF;
-}
-
-/* aktiivisen & hover-linkin väri */
-.navbar-custom .nav-item.active .nav-link,
-.navbar-custom .nav-item:hover .nav-link {
-    color: #ffffff;
-}
-
 /* siirtää sisällön navin alta näkyviin */
 body {
     padding-top: 70px;
@@ -46,7 +25,7 @@ body {
 
 /* Piilotetaan karusellin tekstit pienellä näytöllä */
 @media (max-width: 600px) {
-    #karuselli .carousel-caption {
+    #alku .carousel-caption {
         display: none;
     }
 }
@@ -79,7 +58,7 @@ body {
 
 /* Väli ennen alapalkkia */ 
 footer {
-    margin-top: 150px;
+    margin-top: 80px;
 }
 
 /* Kun klikataan ankkureita, jätetään tilaa fixed-naville */
