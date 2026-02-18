@@ -71,3 +71,8 @@ body {
 #haitari {
     margin-top: 60px;
 }
+/* Kun klikataan ankkureita, jätetään tilaa fixed-naville */
+:target {
+    scroll-margin-top: 80px;
+  }
+  
