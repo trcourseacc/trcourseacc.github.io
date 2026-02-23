@@ -1,0 +1,15 @@
+{
+    "nimi": "Digitekniikat",
+    "osallistujia": 5,
+    "osallistujat": [
+        "Tuomas",
+        "Tero",
+        "Milla",
+        "Malli",
+        "Nukke"
+    ],
+    "alku": "13.1.2025",
+    "loppu": "14.3.2025",
+    "kesto viikkoina": 8,
+    "kuva": "https://jaakkola.github.io/json/digi.JPG"
+}
