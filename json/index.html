@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="fi">
 
+<head>
+    <title>JSON-tehtävä</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <h1>JSON-datan käsittelyä</h1>
+
+    <!-- Kirjoitetaan haettu tieto -->
+    <div id="vastaus"></div>
+
+    <script>
+        // Haetaan JSON tiedosto
+        fetch("tietue.json")
+
+
+
+            // Muunnetaan vastaus JSON muotoon
+            .then(function (response) {
+                return response.json();
+            })
+
+            // Käsitellään vastaus
+            .then(function (responseJson) {
+                kerro(responseJson);
+            })
+
+            // Jos virhe
+            .catch(function () {
+                document.getElementById("vastaus").innerHTML =
+                    "<p>Tietoa ei pystytä hakemaan</p>";
+            });
+
+        // Funktio joka näyttää tiedot
+        function kerro(obj) {
+
+            let tiedot = "";
+
+            tiedot += "<p>" + obj.kuvaus + "</p>";
+
+            // Kuva
+            tiedot += "<p><img src='" + obj.kuva + "'></p>";
+
+            // Opintojakso
+            tiedot += "<h3>Opintojakso</h3>";
+            tiedot += "Nimi: " + obj.opintojakso.nimi + "<br>";
+            tiedot += "Tunnus: " + obj.opintojakso.tunnus + "<br>";
+            tiedot += "Opintopisteet: " + obj.opintojakso.opintopisteet + "<br>";
+
+            // Sisältö
+            tiedot += "<h3>Sisältö</h3>";
+
+            for (let i = 0; i < obj.sisalto.length; i++) {
+                tiedot += obj.sisalto[i] + "<br>";
+            }
+
+            // Tekniikat
+            tiedot += "<h3>Tekniikat</h3>";
+
+            for (let i = 0; i < obj.tekniikat.length; i++) {
+                tiedot += "<b>Aihe: " + obj.tekniikat[i].aihe + "</b> ";
+                tiedot += "<a href='" + obj.tekniikat[i].linkki + "'>" +
+                    obj.tekniikat[i].linkki + "</a><br>";
+            }
+
+            document.getElementById("vastaus").innerHTML = tiedot;
+        }
+    </script>
+
+</body>
+
+</html>
