@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+
+    <title>Tehtävä 3</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Oma tyylitiedosto -->
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+    <!-- Navi -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <div class="container-fluid">
+
+            <!-- Sivun otsikko -->
+            <a class="navbar-brand" href="index.html">Digitekniikat</a>
+
+            <!-- Hampurilaisvalikko pienille näytöille -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Valikon linkit -->
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Etusivu (Tehtävä 1 OSA I)</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="toteutus.html">Tehtävä 1 OSA II</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="poke.html">Poke haku (Tehtävä 2)</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="saa.html">Sää (Tehtävä 3)</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+
+        <h1>Sää Helsingissä</h1>
+        <p id="aika"></p>
+
+        <div id="vastaus"></div>
+
+    </div>
+
+    <script>
+
+        // Näytetään aika kun sivu latautuu
+        function naytaAika() {
+
+            var nyt = new Date();
+
+            var tunnit = nyt.getHours();
+            var minuutit = nyt.getMinutes();
+
+            document.getElementById("aika").innerHTML =
+                "Sää kello " + tunnit + ":" + minuutit;
+        }
+
+
+        // Haetaan Helsingin sää
+        function saa() {
+
+            fetch(`https://api.openweathermap.org/data/2.5/weather?id=658225&appid=665ecd56dfc08dbb50feb8b8f5034e28&lang=fi&units=metric`)
+
+                .then(function (response) {
+                    return response.json();
+                })
+
+                .then(function (data) {
+                    nayta(data);
+                })
+
+                .catch(function () {
+                    document.getElementById("vastaus").innerHTML =
+                        "Tietoa ei pystytä hakemaan";
+                });
+        }
+
+
+        // Säätiedot
+        function nayta(obj) {
+
+            var tiedot = "";
+
+            tiedot += "<h2>Sää:</h2>";
+            tiedot += obj.weather[0].description + "<br><br>";
+
+            tiedot += "<h2>Lämpötila:</h2>";
+            tiedot += obj.main.temp + " °C<br><br>";
+
+            tiedot += "<h2>Tuuli:</h2>";
+            tiedot += obj.wind.speed + " m/s<br>";
+
+            // Kuva
+            var icon = obj.weather[0].icon;
+            var iconUrl = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
+            tiedot += "<p><img src='" + iconUrl + "'></p>";
+
+            document.getElementById("vastaus").innerHTML = tiedot;
+        }
+
+
+        // Kun sivu latautuu
+        naytaAika();
+        saa();
+
+    </script>
+
+    <!-- Bootstrapin toiminnot (pudotusvalikko ja hampurilainen) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
