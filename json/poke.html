@@ -62,14 +62,19 @@
         <button type="button" onclick="poke()">Hae</button><br><br>
 
         <div id="kaanna"></div>
+        <div id="lisatiedot"></div>
         <div id="nimi">Kirjoita laatikkoon Pokemonin nimi</div>
         <p id="kuva2"></p>
-        <div id="lisatiedot"></div>
+
 
     </div>
 
     <script>
+
         function poke() {
+
+            // Tyhjennetään vanhat lisätiedot ennen uutta hakua
+            document.getElementById("lisatiedot").innerHTML = "";
 
             // Tallennetaan annettu Poken nimi muuttujaan pokeName, muutetaan se samalla pieniksi kirjaimiksi
             const pokeName = document.getElementById("pokemonName").value.toLowerCase();
@@ -78,6 +83,7 @@
             let name = document.getElementById("pokemonName").value;
 
             fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
+
                 // Muunnetaan vastaus JSON-muotoon
                 .then(function (response) {
                     return response.json();
@@ -98,15 +104,48 @@
 
         function pokekuva(obj, name) {
             // Tallennetaan linkki josta löytyy Pokemonin kuva
-            let pokeurl = obj.sprites.front_default;
+            let kuva2 = obj.sprites.front_default;
 
             // Kirjoitetaan kuva ja nimi sivulle sekä tyhjennetään hakukenttä
-            document.getElementById("kuva2").innerHTML = "<img src='" + pokeurl + "'>";
+            document.getElementById("kuva2").innerHTML = "<img src='" + kuva2 + "'>";
             document.getElementById("nimi").innerHTML = "<b>" + name + "</b>";
             document.getElementById("pokemonName").value = "";
             // Käännä-painike vasta haun jälkeen
             document.getElementById("kaanna").innerHTML =
                 "<button type='button' onclick='kaanna()'>Käännä</button>";
+        }
+
+        function kaanna() {
+
+            // Luetaan nimi
+            let name = document.getElementById("nimi").innerText;
+            let pokeName = name.toLowerCase();
+
+            fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (responseJson) {
+                    let kuva3 = responseJson.sprites.back_default;
+                    document.getElementById("kuva2").innerHTML = "<img src='" + kuva3 + "'>";
+
+                    // 3 lisätietoa: type, id, stats (HP)
+                    let type = responseJson.types[0].type.name;
+                    let id = responseJson.id;
+                    let hp = responseJson.stats[0].base_stat;
+
+                    document.getElementById("lisatiedot").innerHTML =
+                        "Type: " + type + "<br>" +
+                        "ID: " + id + "<br>" +
+                        "HP: " + hp;
+
+                })
+                .catch(function () {
+                    document.getElementById("nimi").innerHTML = "<p>Tietoa ei pystytä hakemaan</p>";
+                    document.getElementById("kuva2").innerHTML = "";
+                    document.getElementById("kaanna").innerHTML = "";
+                    document.getElementById("lisatiedot").innerHTML = "";
+                });
         }
     </script>
 
