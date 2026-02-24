@@ -61,8 +61,10 @@
         <input type="text" id="pokemonName" placeholder="Enter Pokemon name">
         <button type="button" onclick="poke()">Hae</button><br><br>
 
+        <div id="kaanna"></div>
         <div id="nimi">Kirjoita laatikkoon Pokemonin nimi</div>
         <p id="kuva2"></p>
+        <div id="lisatiedot"></div>
 
     </div>
 
@@ -84,21 +86,27 @@
                 .then(function (responseJson) {
                     pokekuva(responseJson, name);
                 })
-                // Jos tuli jokin virhe
+                // Jos tuli jokin virhe, virheilmoitus ja kenttien tyhjennys
                 .catch(function () {
                     document.getElementById("nimi").innerHTML = "<p>Tietoa ei pystytä hakemaan</p>";
+                    document.getElementById("kuva2").innerHTML = "";
+                    document.getElementById("kaanna").innerHTML = "";
+                    document.getElementById("lisatiedot").innerHTML = "";
                 });
 
         }
 
         function pokekuva(obj, name) {
-            // Tallennetaan linkki josta löytyy Poken kuva
+            // Tallennetaan linkki josta löytyy Pokemonin kuva
             let pokeurl = obj.sprites.front_default;
 
             // Kirjoitetaan kuva ja nimi sivulle sekä tyhjennetään hakukenttä
             document.getElementById("kuva2").innerHTML = "<img src='" + pokeurl + "'>";
             document.getElementById("nimi").innerHTML = "<b>" + name + "</b>";
             document.getElementById("pokemonName").value = "";
+            // Käännä-painike vasta haun jälkeen
+            document.getElementById("kaanna").innerHTML =
+                "<button type='button' onclick='kaanna()'>Käännä</button>";
         }
     </script>
 
