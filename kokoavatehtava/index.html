@@ -18,6 +18,15 @@
        Muuten sisältö menisi navigaation alle */
         body {
             padding-top: 80px;
+
+        /* Lisätään ankkurilinkkeihin ylimääräinen marginaali,
+       jotta otsikko ei jää navigaation alle */
+        #etusivu,
+        #tekisin,
+        #muu,
+        #siirra {
+            scroll-margin-top: 90px;
+            }
         }
     </style>
 
@@ -117,7 +126,8 @@
                         <p id="siirraVastaus" class="mt-3"></p>
 
                         <!-- Aluksi lukittu nappi -->
-                        <button type="button" class="btn btn-warning mt-3" onclick="vastaaSiirra()" id="siirraNappi" disabled>
+                        <button type="button" class="btn btn-warning mt-3" onclick="vastaaSiirra()" id="siirraNappi"
+                            disabled>
                             Vastaa
                         </button>
                     </div>
